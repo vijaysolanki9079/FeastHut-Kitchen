@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 
 export const Navbar = () => {
   const [menu, setMenu] = useState("mobile-app");
-  
+
   return (
     <div className='navbar'>
       <img src = {assets.logo} alt="" className="logo" />
@@ -17,9 +17,9 @@ export const Navbar = () => {
 
       <div className='navbar-right'>
         <img className='search' src = {assets.search_icon} alt="" />
-        <div class="navbar-search-icon">
+        <div className="navbar-search-icon">
           <img src={assets.basket_icon} alt="" />
-          <div class="dot"></div>
+          <div className="dot"></div>
         </div>
         <button>Sign in</button>
       </div>
