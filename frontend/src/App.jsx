@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from './componemts/Navbar/Navbar';
+import { Navbar } from './componemts/Navbar/Navbar'
 
-export const App = () => {
+const App = () => {
   return (
     <div className='app'>
       <Navbar />
