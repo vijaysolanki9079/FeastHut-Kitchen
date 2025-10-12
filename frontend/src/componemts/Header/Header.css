@@ -43,3 +43,117 @@
 .header-content button:hover {
   background-color: #f0ebeb;
 }
+
+/* ---------- LARGE SCREENS (Up to 1050px) ---------- */
+@media (max-width: 1050px) {
+  .header {
+    height: 38vw;
+    background-size: cover;
+  }
+
+  .header-content {
+    max-width: 45%;
+    left: 5vw;
+  }
+
+  .header-content h2 {
+    font-size: max(5vw, 22px);
+  }
+
+  .header-content p {
+    font-size: 1.2vw;
+  }
+
+  .header-content button {
+    padding: 1.2vw 2.5vw;
+  }
+}
+
+/* ---------- TABLET (Up to 768px) ---------- */
+@media (max-width: 768px) {
+  .header {
+    height: 50vw;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .header-content {
+    max-width: 70%;
+    left: 6vw;
+    bottom: 12%;
+  }
+
+  .header-content h2 {
+    font-size: 5.5vw;
+  }
+
+  .header-content p {
+    font-size: 1.8vw;
+  }
+
+  .header-content button {
+    padding: 1.5vw 3vw;
+    font-size: 2vw;
+  }
+}
+
+/* ---------- MOBILE (Up to 600px) ---------- */
+@media (max-width: 600px) {
+  .header {
+    height: 60vw;
+    margin: 20px auto;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .header-content {
+    max-width: 80%;
+    left: 8vw;
+    bottom: 8%;
+  }
+
+  .header-content h2 {
+    font-size: 6vw;
+  }
+
+  .header-content p {
+    font-size: 2.5vw;
+  }
+
+  .header-content button {
+    padding: 2vw 4vw;
+    font-size: 2.5vw;
+    border-radius: 12px;
+  }
+}
+
+/* ---------- SMALL MOBILE (Up to 480px) ---------- */
+@media (max-width: 480px) {
+  .header {
+    height: 70vw;
+    margin: 15px auto;
+    background-position: center;
+  }
+
+  .header-content {
+    max-width: 90%;
+    left: 5vw;
+    bottom: 6%;
+    gap: 3vw;
+  }
+
+  .header-content h2 {
+    font-size: 7vw;
+  }
+
+  .header-content p {
+    font-size: 3vw;
+    line-height: 1.4;
+  }
+
+  .header-content button {
+    padding: 3vw 5vw;
+    font-size: 3.2vw;
+    border-radius: 10px;
+  }
+}

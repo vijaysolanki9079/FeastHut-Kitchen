@@ -1,0 +1,136 @@
+.footer {
+  background-color: #262323;
+  color: #fff;
+  padding: 40px 6% 15px 6%;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 50px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+/* ------------------- LEFT SECTION ------------------- */
+.footer-content-left {
+  flex: 1.2;
+  min-width: 250px;
+}
+
+.footer-content-left img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.footer-content-left p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-social-icons img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-social-icons img:hover {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(34%) sepia(89%) saturate(3547%) hue-rotate(345deg) brightness(97%) contrast(93%);
+}
+
+/* ------------------- CENTER SECTION ------------------- */
+.footer-content-center {
+  flex: 0.8;
+  min-width: 180px;
+}
+
+.footer-content-center h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #ff4d4d;
+}
+
+.footer-content-center ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-content-center li {
+  margin-bottom: 10px;
+  color: #bbb;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-content-center li:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* ------------------- RIGHT SECTION ------------------- */
+.footer-content-right {
+  flex: 0.9;
+  min-width: 200px;
+}
+
+.footer-content-right h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #ff4d4d;
+}
+
+.footer-content-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-content-right li {
+  margin-bottom: 10px;
+  color: #bbb;
+  font-size: 0.95rem;
+}
+
+/* ------------------- BOTTOM LINE ------------------- */
+.footer hr {
+  border: none;
+  border-top: 1px solid #888;
+  margin: 30px 0 5px 0; 
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-content-left,
+  .footer-content-center,
+  .footer-content-right {
+    flex: none;
+  }
+
+  .footer-social-icons {
+    justify-content: center;
+  }
+}
