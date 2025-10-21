@@ -23,5 +23,4 @@ foodRouter.get("/list", listFood)
 // 3. 
 foodRouter.post("/remove", removeFood);
 
-
 export default foodRouter;
