@@ -1,26 +1,44 @@
-import React from 'react'
-import "./Sidebar.css"
-import { assets } from '../../assets/assets'
+import React from "react";
+import "./Sidebar.css";
+import { assets } from "../../assets/assets";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className='sidebar'> 
-      <div class="sidebar-options">
-        <div class="sidebar-option">
+    <div className="sidebar">
+      <div className="sidebar-options">
+        <NavLink
+          to="/add"
+          className={({ isActive }) =>
+            isActive ? "sidebar-option active" : "sidebar-option"
+          }
+        >
           <img src={assets.add_icon} alt="" />
           <p>Add Items</p>
-        </div>
-        <div class="sidebar-option">
+        </NavLink>
+
+        <NavLink
+          to="/list"
+          className={({ isActive }) =>
+            isActive ? "sidebar-option active" : "sidebar-option"
+          }
+        >
           <img src={assets.order_icon} alt="" />
           <p>List Items</p>
-        </div>
-        <div class="sidebar-option">
+        </NavLink>
+
+        <NavLink
+          to="/orders"
+          className={({ isActive }) =>
+            isActive ? "sidebar-option active" : "sidebar-option"
+          }
+        >
           <img src={assets.order_icon} alt="" />
           <p>Orders</p>
-        </div>
+        </NavLink>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
