@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-const List = ({url}) => {
+const List = () => {
   const url = "http://localhost:4000";
   const [list, setList] = useState([]);
 
