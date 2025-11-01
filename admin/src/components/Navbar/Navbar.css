@@ -13,3 +13,9 @@
 .navbar .profile {
   width: 40px;
 }
+
+.logo img {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+}

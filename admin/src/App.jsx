@@ -24,6 +24,7 @@ function App() {
         <Sidebar />
         <div className="app-main">
           <Routes>
+            <Route path="/" element={<Welcome />} />
             <Route path="/add" element={<Add url={url} />} />
             <Route path="/list" element={<List  />} />
             <Route path="/orders" element={<Orders url={url} />} />
@@ -35,5 +36,19 @@ function App() {
     </>
   );
 }
+
+const Welcome = () => {
+  return (
+    <div className="welcome-container">
+      <h1 className="welcome-title">
+        🍽️ Welcome to the <span>Admin Dashboard</span>!
+      </h1>
+
+      <p className="welcome-text">
+        Manage your food items, categories, and orders efficiently from one place.
+      </p>
+    </div>
+  );
+};
 
 export default App;
