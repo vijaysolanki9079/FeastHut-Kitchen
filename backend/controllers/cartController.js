@@ -1,20 +1,17 @@
 import userModel from "../models/userModel.js";
+import cartModel from "../models/cartModel.js";
 
 // ✅ Add item to cart
 export const addToCart = async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = req.userId;
     const { itemId } = req.body;
+
     const user = await userModel.findById(userId);
-    
     let cartData = user.cartData || {};
 
-    // If the item already exists, increase its quantity
-    if (cartData[itemId]) {
-      cartData[itemId] += 1;
-    } else {
-      cartData[itemId] = 1;
-    }
+    if (cartData[itemId]) cartData[itemId] += 1;
+    else cartData[itemId] = 1;
 
     await userModel.findByIdAndUpdate(userId, { cartData });
     return res.json({ success: true, message: "Item added to cart", cartData });
@@ -27,7 +24,7 @@ export const addToCart = async (req, res) => {
 // ✅ Remove item from cart
 export const removeFromCart = async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = req.userId;
     const { itemId } = req.body;
 
     const user = await userModel.findById(userId);
@@ -35,9 +32,7 @@ export const removeFromCart = async (req, res) => {
 
     if (cartData[itemId]) {
       cartData[itemId] -= 1;
-      if (cartData[itemId] <= 0) {
-        delete cartData[itemId];
-      }
+      if (cartData[itemId] <= 0) delete cartData[itemId];
     }
 
     await userModel.findByIdAndUpdate(userId, { cartData });
@@ -51,15 +46,29 @@ export const removeFromCart = async (req, res) => {
 // ✅ Get all items in cart
 export const getCart = async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = req.userId;
     const user = await userModel.findById(userId);
 
-    return res.json({
-      success: true,
-      cartData: user.cartData || {},
-    });
+    return res.json({ success: true, cartData: user.cartData || {} });
   } catch (error) {
     console.error(error);
     return res.json({ success: false, message: "Error fetching cart" });
+  }
+};
+
+
+// ✅ Clear cart controller
+export const clearCart = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    await cartModel.findOneAndUpdate(
+      { userId },
+      { $set: { cartData: {} } },
+      { new: true, upsert: true }
+    );
+    res.json({ success: true, message: "Cart cleared successfully!" });
+  } catch (error) {
+    console.error("Error clearing cart:", error);
+    res.status(500).json({ success: false, message: "Failed to clear cart" });
   }
 };
