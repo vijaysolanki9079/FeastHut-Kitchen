@@ -60,15 +60,20 @@ export const getCart = async (req, res) => {
 // ✅ Clear cart controller
 export const clearCart = async (req, res) => {
   try {
-    const userId = req.user.id;
-    await cartModel.findOneAndUpdate(
-      { userId },
-      { $set: { cartData: {} } },
-      { new: true, upsert: true }
-    );
+    const userId = req.userId;
+    const user = await userModel.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    user.cartData = {};  // ✅ clear cart
+    await user.save();
+
     res.json({ success: true, message: "Cart cleared successfully!" });
   } catch (error) {
     console.error("Error clearing cart:", error);
     res.status(500).json({ success: false, message: "Failed to clear cart" });
   }
 };
+
