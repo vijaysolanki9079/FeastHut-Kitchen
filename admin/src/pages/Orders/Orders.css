@@ -1,0 +1,85 @@
+.orders-page {
+  padding: 20px;
+}
+
+.orders-page h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #333;
+  font-weight: 600;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 14px;
+  color: #555;
+}
+
+.orders-table th {
+  background-color: #f8f8f8;
+  font-weight: 600;
+  color: #333;
+}
+
+.orders-table tr:hover {
+  background-color: #f9f9f9;
+  transition: background 0.2s ease;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.status-processing { background-color: #f39c12; }
+.status-confirmed { background-color: #27ae60; }
+.status-delivered { background-color: #2980b9; }
+.status-cancelled { background-color: #c0392b; }
+
+/* Payment Badge */
+.payment-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.payment-paid { background-color: #27ae60; }
+.payment-pending { background-color: #f39c12; }
+
+/* Items list styling */
+.orders-table td div {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orders-table th,
+  .orders-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .orders-page h2 {
+    font-size: 22px;
+  }
+}

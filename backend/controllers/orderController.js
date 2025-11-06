@@ -110,3 +110,17 @@ export const getOrdersByUser = async (req, res) => {
     res.status(500).json({ success: false, message: "Error fetching orders" });
   }
 };
+
+// ✅ List all orders (Admin)
+export const listOrders = async (req, res) => {
+  try {
+    const orders = await orderModel.find()
+      .populate("userId", "name email") // optional: show user info
+      .sort({ createdAt: -1 }); // latest orders first
+
+    res.json({ success: true, orders });
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ success: false, message: "Failed to fetch orders" });
+  }
+};
