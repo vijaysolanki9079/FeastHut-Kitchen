@@ -14,6 +14,14 @@
 
 ---
 
+## 🖼️ **Screenshots**
+
+![Home Page](./img/1.png)  
+![Menu Page](./img/2.png)  
+![Checkout Page](./img/3.png)  
+
+---
+
 ## 🧠 **About the Project**
 
 FeastHut is a complete food delivery platform where users can:
