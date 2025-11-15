@@ -78,16 +78,5 @@ const registerUser = async (req, res) => {
 
 
 
-// 🔵 (Optional) Get user profile
-// const getUserProfile = async (req, res) => {
-//   try {
-//     const user = await userModel.findById(req.user.id).select("-password");
-//     res.json({ success: true, user });
-//   } catch (error) {
-//     console.log(error);
-//     res.json({ success: false, message: "Error fetching user profile!" });
-//   }
-
 
 export { registerUser, loginUser };
-// getUserProfile, 

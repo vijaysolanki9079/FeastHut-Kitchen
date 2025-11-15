@@ -9,7 +9,7 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
 
   // ---------------------------
-  // ! Fetch Food List
+  // ! Fetch Food List for admin panel 
   // ---------------------------
   const fetchFoodList = async () => {
     try {
@@ -25,7 +25,7 @@ const StoreContextProvider = (props) => {
   };
 
   // ---------------------------
-  // ! Fetch Cart Data
+  // ! Fetch Cart Data 
   // ---------------------------
   const fetchCart = async (savedToken) => {
     try {

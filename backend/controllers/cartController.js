@@ -47,7 +47,15 @@ export const removeFromCart = async (req, res) => {
 export const getCart = async (req, res) => {
   try {
     const userId = req.userId;
+    if (!userId) {
+      return res.json({ success: false, message: "UserId missing" });
+    }
+
     const user = await userModel.findById(userId);
+
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
 
     return res.json({ success: true, cartData: user.cartData || {} });
   } catch (error) {
