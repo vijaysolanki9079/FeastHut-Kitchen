@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import 'dotenv/config'
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
-  const url = "http://localhost:4000";
+  const url = import.meta.env.VITE_API_URL;
   const [token, setToken] = useState(null); // ✅ null initially (not empty string)
   const [food_list, setFoodList] = useState([]);
 
@@ -113,6 +114,44 @@ const StoreContextProvider = (props) => {
     // ✅ clear frontend cart state
     setCartItems({});
   };
+
+
+  const wakeUpServer = async () => {
+    try {
+      await axios.get(`${url}`);
+      console.log("Backend awakened");
+    } catch (error) {
+      console.log("Wakeup ping failed");
+    }
+  };
+
+  useEffect(() => {
+    wakeUpServer();   // ⭐ add this
+
+    const savedToken = localStorage.getItem("token");
+    if (savedToken) {
+      setToken(savedToken);
+      fetchCart(savedToken);
+    } else {
+      setToken("");
+    }
+
+    fetchFoodList();
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ---------------------------
   // ! Logout
