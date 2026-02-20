@@ -14,7 +14,12 @@ const port = process.env.PORT || 10000;
 
 // middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://feasthut-kitchen.vercel.app",
+    "https://feasthut-admin.vercel.app"
+  ]
+}));
 
 // db connection
 connectDB();
