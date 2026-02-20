@@ -1,11 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import 'dotenv/config'
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
-  const url = process.env.VITE_API_URL;
+  const url = import.meta.env.VITE_API_URL;
   const [token, setToken] = useState(null); // ✅ null initially (not empty string)
   const [food_list, setFoodList] = useState([]);
 
