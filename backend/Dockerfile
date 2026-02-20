@@ -7,6 +7,6 @@ RUN bun install
 
 COPY . .
 
-EXPOSE 4000
+EXPOSE 10000
 
 CMD ["bun", "run", "server.js"]
