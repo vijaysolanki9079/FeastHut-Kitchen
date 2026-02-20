@@ -14,14 +14,12 @@ const port = process.env.PORT || 10000;
 
 // middleware
 app.use(express.json());
-app.use(cors());
 
 app.use(cors({
   origin: [
     "https://feast-hut-kitchen.vercel.app",
     "http://localhost:5173"
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
