@@ -5,15 +5,17 @@ import ExploreMenu from '../../componemts/ExploreMenu/ExploreMenu';
 import FoodDisplay from '../../componemts/FoodDisplay/FoodDisplay';
 import AppDownload from '../../componemts/AppDownload/AppDownload';
 
+import { StoreContext } from '../../context/StoreContext';
+
 const Home = () => {
-  const [category, setCategory] = useState("All");
+  const { category, setCategory } = React.useContext(StoreContext);
 
   return (
     <div>
-        <Header />
-        <ExploreMenu category= {category} setCategory={setCategory} />
-        <FoodDisplay category= {category}/>
-        <AppDownload/>
+      <Header />
+      <ExploreMenu category={category} setCategory={setCategory} />
+      <FoodDisplay category={category} />
+      <AppDownload />
     </div>
   );
 }

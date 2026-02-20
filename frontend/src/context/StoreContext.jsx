@@ -81,9 +81,9 @@ const StoreContextProvider = (props) => {
 
   const removeFromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-  
-    if(token){
-      await axios.post(url + "/api/cart/remove", {itemId}, {headers:{token}});
+
+    if (token) {
+      await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } });
     }
   };
 
@@ -109,7 +109,7 @@ const StoreContextProvider = (props) => {
     } catch (error) {
       console.error("Error clearing cart in backend:", error);
     }
-    
+
     // ✅ clear frontend cart state
     setCartItems({});
   };
@@ -123,6 +123,8 @@ const StoreContextProvider = (props) => {
     localStorage.removeItem("token");
   };
 
+  const [category, setCategory] = useState("All");
+
   const contextValue = {
     food_list,
     cartItems,
@@ -135,7 +137,9 @@ const StoreContextProvider = (props) => {
     setToken,
     fetchFoodList,
     logout,
-    clearCart, 
+    clearCart,
+    category,
+    setCategory,
   };
 
   // ✅ Don’t render until token state is restored
