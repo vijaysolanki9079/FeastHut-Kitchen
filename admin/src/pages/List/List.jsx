@@ -6,7 +6,7 @@ import { FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const List = () => {
-  const url = "http://localhost:4000";
+  const url = import.meta.env.VITE_API_URL;
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
