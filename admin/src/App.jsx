@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const location = useLocation();
-  const url = "http://localhost:4000";
+  const url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     toast.dismiss();
