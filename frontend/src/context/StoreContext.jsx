@@ -4,7 +4,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
-  const url = "http://localhost:4000";
+  const url = import.meta.env.VITE_API_URL;
   const [token, setToken] = useState(null); // ✅ null initially (not empty string)
   const [food_list, setFoodList] = useState([]);
 
@@ -81,9 +81,9 @@ const StoreContextProvider = (props) => {
 
   const removeFromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-  
-    if(token){
-      await axios.post(url + "/api/cart/remove", {itemId}, {headers:{token}});
+
+    if (token) {
+      await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } });
     }
   };
 
@@ -109,10 +109,48 @@ const StoreContextProvider = (props) => {
     } catch (error) {
       console.error("Error clearing cart in backend:", error);
     }
-    
+
     // ✅ clear frontend cart state
     setCartItems({});
   };
+
+
+  const wakeUpServer = async () => {
+    try {
+      await axios.get(`${url}`);
+      console.log("Backend awakened");
+    } catch (error) {
+      console.log("Wakeup ping failed");
+    }
+  };
+
+  useEffect(() => {
+    wakeUpServer();   // ⭐ add this
+
+    const savedToken = localStorage.getItem("token");
+    if (savedToken) {
+      setToken(savedToken);
+      fetchCart(savedToken);
+    } else {
+      setToken("");
+    }
+
+    fetchFoodList();
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ---------------------------
   // ! Logout
@@ -122,6 +160,8 @@ const StoreContextProvider = (props) => {
     setCartItems({});
     localStorage.removeItem("token");
   };
+
+  const [category, setCategory] = useState("All");
 
   const contextValue = {
     food_list,
@@ -135,7 +175,9 @@ const StoreContextProvider = (props) => {
     setToken,
     fetchFoodList,
     logout,
-    clearCart, 
+    clearCart,
+    category,
+    setCategory,
   };
 
   // ✅ Don’t render until token state is restored

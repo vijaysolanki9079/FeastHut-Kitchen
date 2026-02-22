@@ -10,7 +10,7 @@
 ---
 
 ## 🌐 **Live Demo**
-🚀 [Visit FeastHut (Demo Link)](https://your-live-demo-link.com)
+🚀 [Visit FeastHut (Demo Link)](https://your-live-demo-link.com) - Not deployed yet
 
 ---
 
@@ -98,15 +98,18 @@ cd FeastHut
 ```
 ### 💼 Further Instructions
 ``` bash
-# Backend
+# All Once Together (Root)
+npm run dev (using concurrently would start all the servers) 
+
+# Backend (Manually)
 cd backend
 npm install
 
-# Frontend
+# Frontend (Manually)
 cd ../frontend
 npm install
 
-# Admin Panel
+# Admin Panel (Manually)
 cd ../admin
 npm install
 
@@ -121,3 +124,4 @@ npm run dev
 # Run admin panel
 cd ../admin
 npm run dev
+

@@ -8,7 +8,7 @@ import Footer from './componemts/Footer/Footer';
 import LoginPopup from './componemts/LoginPopup/LoginPopup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';   // ✅ Must import this CSS
-import MyOrders from './pages/MyOrders/myOrders';
+import MyOrders from './pages/MyOrders/MyOrders';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);

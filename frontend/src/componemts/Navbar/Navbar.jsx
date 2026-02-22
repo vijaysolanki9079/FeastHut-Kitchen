@@ -6,7 +6,7 @@ import { StoreContext } from '../../context/StoreContext';
 
 export const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("mobile-app");
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken, setCategory } = useContext(StoreContext);
 
 
   const navigate = useNavigate();
@@ -14,6 +14,16 @@ export const Navbar = ({ setShowLogin }) => {
     setToken("");
     localStorage.removeItem("token");
     navigate('/')
+  };
+
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSuggestionClick = (name) => {
+    setSearchTerm(name);
+    setCategory(name);
+    setShowSuggestions(false);
+    window.location.href = '#explore-menu';
   };
 
   return (
@@ -28,7 +38,40 @@ export const Navbar = ({ setShowLogin }) => {
       </ul>
 
       <div className='navbar-right'>
-        <img className='search' src={assets.search_icon} alt="" />
+        <div className="navbar-search">
+          <input
+            type="text"
+            placeholder='Search...'
+            value={searchTerm}
+            onChange={(e) => {
+              const value = e.target.value;
+              setSearchTerm(value);
+              if (value === "") {
+                setCategory("All");
+              }
+            }}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+          />
+          <img
+            className='search'
+            src={assets.search_icon}
+            alt=""
+            onClick={() => setShowSuggestions(!showSuggestions)}
+          />
+          {showSuggestions && (
+            <ul className="search-suggestions">
+              <li onClick={() => handleSuggestionClick("Salad")}>Salad</li>
+              <li onClick={() => handleSuggestionClick("Rolls")}>Rolls</li>
+              <li onClick={() => handleSuggestionClick("Deserts")}>Deserts</li>
+              <li onClick={() => handleSuggestionClick("Sandwich")}>Sandwich</li>
+              <li onClick={() => handleSuggestionClick("Cake")}>Cake</li>
+              <li onClick={() => handleSuggestionClick("Pure Veg")}>Pure Veg</li>
+              <li onClick={() => handleSuggestionClick("Pasta")}>Pasta</li>
+              <li onClick={() => handleSuggestionClick("Noodles")}>Noodles</li>
+            </ul>
+          )}
+        </div>
         <div className="navbar-search-icon">
           <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
