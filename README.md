@@ -10,7 +10,7 @@
 ---
 
 ## 🌐 **Live Demo**
-🚀 [Visit FeastHut (Demo Link)](https://your-live-demo-link.com) - Not deployed yet
+🚀 [Visit FeastHut (Demo Link)](feast-hut-kitchen.vercel.app) - Not deployed yet
 
 ---
 
@@ -124,4 +124,5 @@ npm run dev
 # Run admin panel
 cd ../admin
 npm run dev
+
 
