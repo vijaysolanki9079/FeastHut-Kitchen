@@ -20,7 +20,6 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "https://feast-hut-kitchen.vercel.app",
-    "https://feast-hut-admin.vercel.app",
     "http://localhost:5173"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
